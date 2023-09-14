@@ -28,4 +28,4 @@ jobs:
       with: 
         app-name: 'WebappGithubActionyj79' publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: 'deeplearningb/github-actions-app:${{ github.sha }}'
+        images: 'deeplearningb/github-actions-app:latent
