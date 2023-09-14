@@ -16,12 +16,16 @@ jobs:
             python-version: '3.8'
           - os: windows-latest
             python-version: '3.6'
- 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Display Python version
-      run: python -c "import sys; print(sys.version)"
+ steps:
+  - uses: actions/checkout@v3
+    name: Check out code
+
+  - uses: mr-smithers-excellent/docker-build-push@v6
+    name: Build & push Docker image
+    with:
+      image: deeplearningb/github-action-app
+      tags: v1, latest
+      registry: registry-url.io
+      dockerfile: Dockerfile.ci
+      username: ${{ secrets.DOCKER_USERNAME }}
+      password: ${{ secrets.DOCKER_PASSWORD }}
